@@ -33,10 +33,10 @@ except IOError:
 #
 if __name__ == '__main__':
   application = imp.load_source('app', 'flaskapp.py')
-  port = application.app.config['PORT']
-  ip = application.app.config['IP']
-  app_name = application.app.config['APP_NAME']
-  host_name = application.app.config['HOST_NAME']
+  port = int(os.environ.get('OPENSHIFT_PYTHON_PORT',8080))
+  ip = os.environ.get('OPENSHIFT_PYTHON_IP','127.0.0.1')
+  app_name = os.environ.get('OPENSHIFT_APP_NAME','flask')
+  host_name = os.environ.get('OPENSHIFT_APP_DNS','localhost')
 
   fwtype="wsgiref"
   for fw in ("gevent", "cherrypy", "flask"):
