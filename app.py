@@ -34,7 +34,7 @@ except IOError:
 if __name__ == '__main__':
   application = imp.load_source('app', 'flaskapp.py')
   port = int(os.environ.get('OPENSHIFT_PYTHON_PORT',8080))
-  ip = os.environ.get('OPENSHIFT_PYTHON_IP','127.0.0.1')
+  ip = os.environ.get('OPENSHIFT_PYTHON_IP','0.0.0.0')
   app_name = os.environ.get('OPENSHIFT_APP_NAME','flask')
   host_name = os.environ.get('OPENSHIFT_APP_DNS','localhost')
 
